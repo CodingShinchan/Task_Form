@@ -11,7 +11,9 @@ const app = express();
 val();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://task-form-wzvj.onrender.com"
+}));
 app.use(bodyParser.json());
 
 // MongoDB connection
