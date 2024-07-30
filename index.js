@@ -12,7 +12,7 @@ val();
 
 // Middleware
 app.use(cors({
-  origin: "https://task-form-wzvj.onrender.com"
+  origin: "https://task-form-wzvj.onrender.com",
 }));
 app.use(bodyParser.json());
 
