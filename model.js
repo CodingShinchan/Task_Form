@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const emailRegex = /^[a-zA-Z0-9.]+@gmail\.com$/;
+
 const isAlphaWithSpaces = (value) => /^[a-zA-Z\s]+$/.test(value);
 const isValidStreet = (value) =>
   /^[a-zA-Z0-9\s.,-]+$/.test(value) && /[a-zA-Z]/.test(value);
@@ -32,10 +34,12 @@ const userSchema = new mongoose.Schema({
         "Mobile number must be 10 digits, not start with 0, and not be all zeros",
     },
   },
-  emailId: {
+emailId: {
     type: String,
     required: [true, "Email is required"],
-    match: [/\S+@\S+\.\S+/, "Email format is invalid"],
+    match: [emailRegex, "Email format is invalid"],
+    unique: true, 
+    trim: true, 
   },
   address: {
     street: {
